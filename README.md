@@ -106,7 +106,6 @@ After=network-online.target
 AutoUpdate=registry
 Image=ghcr.io/sharevb/it-tools:latest
 PublishPort=8080:8080
-Label=io.containers.autoupdate=registry
 
 [Install]
 WantedBy=multi-user.target default.target
