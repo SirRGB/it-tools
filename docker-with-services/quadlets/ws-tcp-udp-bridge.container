@@ -1,0 +1,17 @@
+[Unit]
+Description=WS TCP UDP Bridge
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/ws-tcp-udp-bridge:latest
+ContainerName=ws-tcp-udp-bridge
+AutoUpdate=registry
+PublishPort=8002:8080
+Environment=BASIC_AUTH=${BASIC_AUTH}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

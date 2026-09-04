@@ -1,0 +1,17 @@
+[Unit]
+Description=Puppeteer HTML to PDF
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/puppeteer-htmltopdf:latest
+ContainerName=puppeteer-htmltopdf
+AutoUpdate=registry
+PublishPort=8004:3000
+Environment=BASIC_AUTH=${BASIC_AUTH}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

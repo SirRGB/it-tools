@@ -1,0 +1,18 @@
+[Unit]
+Description=Docker Image Download Server
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/docker-image-download-server:latest
+ContainerName=docker-image-download-server
+AutoUpdate=registry
+PublishPort=8001:3000
+Volume=/run/user/1000/podman/podman.sock:/var/run/docker.sock
+Environment=BASIC_AUTH=${BASIC_AUTH}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

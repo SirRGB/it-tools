@@ -1,0 +1,17 @@
+[Unit]
+Description=Network Utils WS
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/network-utils-ws:latest
+ContainerName=network-utils-ws
+AutoUpdate=registry
+PublishPort=8003:8000
+Environment=BASIC_AUTH=${BASIC_AUTH}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

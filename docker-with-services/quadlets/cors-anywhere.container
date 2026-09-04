@@ -1,0 +1,18 @@
+[Unit]
+Description=Cors Anywhere
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/cors-anywhere:latest
+ContainerName=cors-anywhere
+AutoUpdate=registry
+PublishPort=8005:8080
+Environment=CORSANYWHERE_BASIC_AUTH=${BASIC_AUTH}
+Environment=CORSANYWHERE_ALLOWED_HTTP_METHODS=HEAD,GET,POST
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target

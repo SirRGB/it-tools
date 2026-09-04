@@ -1,0 +1,18 @@
+[Unit]
+Description=IT Tools
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/sharevb/it-tools:latest
+ContainerName=it-tools
+AutoUpdate=registry
+PublishPort=8080:8080
+Volume=%h/.config/containers/storage/tools-settings.json:/usr/share/nginx/html/tools-settings.json
+Environment=BASIC_AUTH=${BASIC_AUTH}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target
